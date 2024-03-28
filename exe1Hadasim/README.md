@@ -90,15 +90,20 @@ npm run dev
   ```
 
 # API architecture:
-1.Separation of Concerns: Ensure that each module has a single responsibility. It's good that you already have controllers, services, and routers separated, but you can further improve this by ensuring that each component focuses on its specific task.
+Member Endpoints:
 
-2.Error Handling Middleware: Implement a centralized error handling middleware to catch errors and handle them uniformly across your application. This can simplify error management and make error responses consistent.
+/member/: GET (Retrieve all members), POST (Add a new member)
+/member/:id: GET (Retrieve a specific member by ID), PUT (Update a specific member by ID), DELETE (Delete a specific member by ID)
+Vaccination Endpoints:
 
-3.Validation Middleware: Use middleware for request validation to ensure that incoming data meets the expected format and constraints. This can help prevent malformed requests from reaching your controllers and services.
+/vaccination/: GET (Retrieve all vaccinations), POST (Add a new vaccination)
+/vaccination/:id: GET (Retrieve a specific vaccination by ID), PUT (Update a specific vaccination by ID), DELETE (Delete a specific vaccination by ID)
+Receiving Vaccines Endpoints:
 
-4.Authentication and Authorization: Implement authentication and authorization mechanisms to secure your API endpoints. This can involve using JSON Web Tokens (JWT) for authentication and role-based access control (RBAC) for authorization.
+/ReceivingVaccines/: GET (Retrieve all receiving vaccine records), POST (Add a new receiving vaccine record)
+/ReceivingVaccines/:MemberId/:VaccinationId: GET (Retrieve a specific receiving vaccine record by Member ID and Vaccination ID), PUT (Update a specific receiving vaccine record by Member ID and Vaccination ID), DELETE (Delete a specific receiving vaccine record by Member ID and Vaccination ID)
+Corona Endpoints:
 
-5.Swagger Documentation: Consider integrating Swagger or a similar tool for API documentation. This can automatically generate documentation based on your code and make it easier for developers to understand and consume your API.
-
-7.Dependency Injection: Consider using a dependency injection (DI) framework or pattern to manage dependencies between your components. This can improve modularity and testability by decoupling components and making them easier to replace or mock in tests.
+/corona/: GET (Retrieve all corona cases), POST (Add a new corona case)
+/corona/:id: GET (Retrieve a specific corona case by Member ID), PUT (Update a specific corona case by Member ID), DELETE (Delete a specific corona case by Member ID)
 

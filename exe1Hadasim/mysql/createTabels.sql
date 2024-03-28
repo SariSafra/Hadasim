@@ -16,8 +16,6 @@ CREATE TABLE IF NOT EXISTS hmo.Members(
     PRIMARY KEY (ID)
 );
 
-INSERT INTO hmo.Members
-VALUES (215478959,'Safra','Miri','jlm','Zafririm',18,'2009-03-03',0556787008,025710931);
 CREATE TABLE IF NOT EXISTS hmo.ReceivingVaccines (
 	MemberId varchar(9) NOT NULL,
     VaccinationsId MEDIUMINT NOT NULL,
@@ -31,7 +29,5 @@ CREATE TABLE IF NOT EXISTS hmo.CoronaPatients (
     EndDate Date,
     FOREIGN KEY (MemberId) REFERENCES hmo.Members(MemberId)
 );
-select * from hmo.Vaccinations;
-
 
 

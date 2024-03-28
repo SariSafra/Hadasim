@@ -6,21 +6,21 @@ A system that provides information services about members of an HMO.
 
 ## How to use the site?
 
-Welcome to the site:
+#### Welcome to the site:
 ![welcome](./screenShot/screenShot1.png)
-View user information:
+#### View user information:
 ![user information](./screenShot/screenShot2.png)
-Edit user information:
+#### Edit user information:
 ![edit user information](./screenShot/screenShot3.png)
-Adding a vaccination receiving to a member:
+##### Adding a vaccination receiving to a member:
 ![add vaccination receiving](./screenShot/screenShot4.png)
-Add a vaccine:
+##### Add a vaccine:
 ![Add a vaccine](./screenShot/screenShot5.png)
-It has been added!
+##### It has been added!
 ![vaccine](./screenShot/screenShot6.png)
-Add illness to a friend
+##### Add illness to a friend
 ![add illness](./screenShot/screenShot7.png)
-It has been added!
+#### It has been added!
 ![illness](./screenShot/screenShot.8.png)
 Add a new member:
 ![Add a new member](./screenShot/screenShot9.png)

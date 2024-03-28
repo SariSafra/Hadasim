@@ -1,0 +1,7 @@
+﻿  Hadasimexe2.cpp
+  SquareTower.cpp
+  Tower.cpp
+  TriangularTower.cpp
+C:\Users\DELL\Documents\hadasim\Hadasim\Hadasimexe2\Hadasimexe2\TriangularTower.cpp(15,8): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+  Hadasimexe2.vcxproj -> C:\Users\DELL\Documents\hadasim\Hadasim\Hadasimexe2\x64\Debug\Hadasimexe2.exe

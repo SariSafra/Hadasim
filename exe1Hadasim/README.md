@@ -88,6 +88,8 @@ Start the client:
   ```bash
 npm run dev
   ```
+# ERD
+![ERD](./screenShot/screenShot11.png)
 
 # API architecture:
 Member Endpoints:

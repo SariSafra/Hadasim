@@ -22,9 +22,9 @@ A system that provides information services about members of an HMO.
 ![add illness](./screenShot/screenShot7.png)
 #### It has been added!
 ![illness](./screenShot/screenShot.8.png)
-Add a new member:
+#### Add a new member:
 ![Add a new member](./screenShot/screenShot9.png)
-It has been added!
+#### It has been added!
 ![new member](./screenShot/screenShot10.png)
 
 ## Built With

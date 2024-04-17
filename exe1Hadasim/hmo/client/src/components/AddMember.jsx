@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import { displayMember } from "./Tools/PrintTools.jsx";
 import { CreateRequest } from "./Tools/GetTools.jsx";
-export default function AddMember() {
+export default function AddMember({setMembers,members}) {
   const [commentArea, setCommentArea] = useState('');
   const fields = { MemberId: "", LastName: '', FirstName: '', City: '', Street: '', HouseNum: '', DateOfBirth: '', MobileNum: '', PhoneNum: "" }
   const [memberDetails, setMemberDetails] = useState(fields);
@@ -17,13 +17,24 @@ export default function AddMember() {
     }
     return true;
   };
-  const handleSubmit = (e) => {
+  const handleSubmit =async (e) => {
+    setCommentArea("try...");
     e.preventDefault();
     if (!isObjectEmpty(errorDisplay)) return;
-    CreateRequest(setCommentArea, 'member', memberDetails[0]);
-    setMemberDetails(fields);
-    setErrorDisplay(fields);
-    setAddMember(false);
+    const v= await CreateRequest(setCommentArea, 'member', memberDetails[0]);
+    if(v)
+    {
+      setCommentArea("try...");
+    }
+    if(commentArea=='')
+    {
+        setErrorDisplay(fields);
+        setAddMember(false);
+        setMembers([...members,memberDetails[0]]);
+        setMemberDetails(fields);
+        setCommentArea("");
+    }
+    
   };
   return (<>
     <button onClick={() => { setAddMember(!addMember) }}>add member</button>

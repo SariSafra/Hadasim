@@ -5,7 +5,7 @@ import { displayMember } from "./Tools/PrintTools.jsx";
 import MemberVaccinations from "./MemberVaccinations.jsx";
 import MemberDisease from "./MemberDisease.jsx";
 
-export default function DisplayMember({ member }) {
+export default function DisplayMember({ member,setMembers }) {
   const fields = {
     MemberId: "",
     LastName: "",
@@ -61,7 +61,7 @@ export default function DisplayMember({ member }) {
         <button onClick={() => setShowMember(!showMember)}>{showMember ? <strong>-</strong> : <strong>+</strong>}</button>
         <button onClick={() => setShowVaccinations(!showVaccinations)}>💉</button>
         <button onClick={() => setShowDisease(!showDisease)}>🤒</button>
-        <button onClick={() => DeleteRequest(setMemberDetails, setCommentArea, member.MemberId)}>🗑️</button>
+        <button onClick={() => DeleteRequest(setMembers, setCommentArea, member.MemberId)}>🗑️</button>
       </div>
 
       {showVaccinations && <MemberVaccinations memberId={member.MemberId} />}

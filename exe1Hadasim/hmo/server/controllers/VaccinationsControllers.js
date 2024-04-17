@@ -6,9 +6,11 @@ export default class VaccinationsControllers {
             res.header("Access-Control-Allow-Origin", "*");
             res.send(data);
         }
-        catch (err) {
-            res.status(404).end("Error while serching Vaccination by id.")
-            next(err);
+        catch (ex) {
+            const err = {}
+            err.statusCode = 404;
+            err.message = ex;
+            next(err)
         }
 
     }
@@ -18,9 +20,11 @@ export default class VaccinationsControllers {
             res.header("Access-Control-Allow-Origin", "*");
             res.send(data);
         }
-        catch (err) {
-            res.status(404).end("Error while searching Vaccinations.")
-            next(err);
+        catch (ex) {
+            const err = {}
+            err.statusCode = 404;
+            err.message = ex;
+            next(err)
         }
     }
 
@@ -29,9 +33,11 @@ export default class VaccinationsControllers {
             const response = await updateVaccination(req.params.id, req.body);
             return res.json(response);
         }
-        catch (err) {
-            res.status(404).end("Error while updating vaccination")
-            next(err);
+        catch (ex) {
+            const err = {}
+            err.statusCode = 404;
+            err.message = ex;
+            next(err)
         }
     }
     async deleteVaccination(req, res, next) {
@@ -39,9 +45,11 @@ export default class VaccinationsControllers {
             const response = await deleteVaccination(req.params.id);
             return res.json(response);
         }
-        catch (err) {
-            res.status(404).end("Error while deleting vaccination")
-            next(err);
+        catch (ex) {
+            const err = {}
+            err.statusCode = 404;
+            err.message = ex;
+            next(err)
         }
     }
     async addVaccination(req, res, next) {
@@ -49,9 +57,11 @@ export default class VaccinationsControllers {
             const response = await addVaccination(req.body);
             return res.json(response);
         }
-        catch (err) {
-            res.status(404).end("Error while adding vaccination")
-            next(err);
+        catch (ex) {
+            const err = {}
+            err.statusCode = 404;
+            err.message = ex;
+            next(err)
         }
     }
 }

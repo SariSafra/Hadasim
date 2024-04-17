@@ -21,7 +21,6 @@ async function UpdateMember(memberId, updatedMember) {
 }
 async function deleteMember(memberId) {
     let resulat;
-    console.log("in service member in delete member function: " + memberId);
     const coronaDe = await deleteCorona(memberId);
     const receivingvec = await deleteReceiving(memberId)
     if (coronaDe && receivingvec)

@@ -9,10 +9,10 @@ export default function Members() {
   useEffect(() => {
     GetAllRequest(setMembers, setCommentArea, "member");
 
-  }, [members])
+  }, [])
   return (<>
-    <AddMember />
-    <ul>{members.map((member) => (<DisplayMember member={member} />))}</ul>
+    <AddMember setMembers={setMembers} members={members}/>
+    <ul>{members.map((member) => (<DisplayMember member={member} setMembers={setMembers}/>))}</ul>
     <div>{commentArea}</div>
 
   </>)

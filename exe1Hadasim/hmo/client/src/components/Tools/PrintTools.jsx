@@ -62,39 +62,39 @@ export const displayMember = (memberDetails, editDetails, errorDisplay, setError
     <form onSubmit={handleSubmit}>
       <li><strong>Member Id:</strong>
         {inAdd ?
-          <input name="MemberId" type="text" value={memberDetails.MemberId} onChange={handleChange} /> :
+          <input name="MemberId" type="text" value={memberDetails.MemberId} onChange={handleChange} required noValidate/> :
           <span> {memberDetails.MemberId}</span>}</li>
       <span className='commentArea'>{errorDisplay.MemberId}</span><br />
       <li><strong>Last Name:</strong> {editDetails ?
-        <input name="LastName" type="text" value={memberDetails.LastName} onChange={handleChange} /> :
+        <input name="LastName" type="text" value={memberDetails.LastName} onChange={handleChange} required noValidate/> :
         memberDetails.LastName}</li>
       <span className='commentArea'>{errorDisplay.LastName}</span><br />
       <li><strong>First Name:</strong> {editDetails ?
-        <input name="FirstName" type="text" value={memberDetails.FirstName} onChange={handleChange} /> :
+        <input name="FirstName" type="text" value={memberDetails.FirstName} onChange={handleChange} required noValidate/> :
         memberDetails.FirstName}</li>
       <span className='commentArea'>{errorDisplay.FirstName}</span><br />
       <li><strong> City:</strong> {editDetails ?
-        <input name="City" type="text" value={memberDetails.City} onChange={handleChange} /> :
+        <input name="City" type="text" value={memberDetails.City} onChange={handleChange} required noValidate/> :
         memberDetails.City}</li>
       <span className='commentArea'>{errorDisplay.City}</span><br />
       <li><strong>Street:</strong> {editDetails ?
-        <input name="Street" type="text" value={memberDetails.Street} onChange={handleChange} /> :
+        <input name="Street" type="text" value={memberDetails.Street} onChange={handleChange} required noValidate/> :
         memberDetails.Street}</li>
       <span className='commentArea'>{errorDisplay.Street}</span><br />
       <li><strong>House Number:</strong> {editDetails ?
-        <input name="HouseNum" type="text" value={memberDetails.HouseNum} onChange={handleChange} /> :
+        <input name="HouseNum" type="text" value={memberDetails.HouseNum} onChange={handleChange} required noValidate/> :
         memberDetails.HouseNum}</li>
       <span className='commentArea'>{errorDisplay.HouseNum}</span><br />
       <li><strong>Date Of Birth:</strong> {editDetails ?
-        <input name="DateOfBirth" type="Date" value={memberDetails.DateOfBirth} onChange={handleChange} /> :
-        memberDetails.DateOfBirth}</li>
+        <input name="DateOfBirth" type="Date" value={memberDetails.DateOfBirth} onChange={handleChange} required noValidate/> :
+        convertToDateFormat(memberDetails.DateOfBirth)}</li>
       <span className='commentArea'>{errorDisplay.DateOfBirth}</span><br />
       <li><strong>Mobile Number:</strong> {editDetails ?
-        <input name="MobileNum" type="text" value={memberDetails.MobileNum} onChange={handleChange} /> :
+        <input name="MobileNum" type="text" value={memberDetails.MobileNum} onChange={handleChange} required noValidate/> :
         memberDetails.MobileNum}</li>
       <span className='commentArea'>{errorDisplay.MobileNum}</span><br />
       <li><strong>Phone Number:</strong> {editDetails ?
-        <input name="PhoneNum" type="text" value={memberDetails.PhoneNum} onChange={handleChange} /> :
+        <input name="PhoneNum" type="text" value={memberDetails.PhoneNum} onChange={handleChange} required noValidate/> :
         memberDetails.PhoneNum}</li>
       <span className='commentArea'>{errorDisplay.PhoneNum}</span><br />
       {editDetails ? <button className="addButton" type="submit">update</button> : <></>}
@@ -110,3 +110,15 @@ export const convertToDateFormat = (isoDate) => {
   const year = date.getFullYear();
   return `${year}-${month}-${day}`;
 };
+export const convertToDateTime=(dateString) =>{
+  // Get current time
+  const currentTime = new Date().toLocaleTimeString('en-US', { hour12: false });
+  // Concatenate current time to the date string
+  const dateTimeString = `${dateString} ${currentTime}`;
+  return dateTimeString;
+}
+// const dateObj = new Date(memberDetails.DateOfBirth);
+// const year = dateObj.getFullYear();
+// const month = String(dateObj.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed, so we add 1
+// const day = String(dateObj.getDate()).padStart(2, '0');
+// const formattedDate = `${year}-${month}-${day}`;

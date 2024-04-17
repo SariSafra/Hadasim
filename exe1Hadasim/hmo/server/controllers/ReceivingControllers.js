@@ -6,9 +6,11 @@ export default class ReceivingControllers {
             res.header("Access-Control-Allow-Origin", "*");
             return res.json(data);
         }
-        catch (err) {
-            res.status(404).end("Error while searching receiving  vaccination by id")
-            next(err);
+        catch (ex) {
+            const err = {}
+            err.statusCode = 404;
+            err.message = ex;
+            next(err)
         }
 
     }
@@ -18,9 +20,11 @@ export default class ReceivingControllers {
             res.header("Access-Control-Allow-Origin", "*");
             res.send(data);
         }
-        catch (err) {
-            res.status(404).end("Error while searching receiving vaccinations")
-            next(err);
+        catch (ex) {
+            const err = {}
+            err.statusCode = 404;
+            err.message = ex;
+            next(err)
         }
     }
 
@@ -29,9 +33,11 @@ export default class ReceivingControllers {
             const response = await updateReceiving(req.params.MemberId, req.params.VaccinationId, req.body);
             res.json(response);
         }
-        catch (err) {
-            res.status(404).end("Error while updating receiving vaccination")
-            next(err);
+        catch (ex) {
+            const err = {}
+            err.statusCode = 404;
+            err.message = ex;
+            next(err)
         }
     }
     async deleteReceiving(req, res, next) {
@@ -39,19 +45,24 @@ export default class ReceivingControllers {
             const response = await deleteReceiving(req.params.MemberId, req.params.VaccinationId);
             res.json(response);
         }
-        catch (err) {
-            res.status(404).end("Error while deleting receiving vaccination")
-            next(err);
+        catch (ex) {
+            const err = {}
+            err.statusCode = 404;
+            err.message = ex;
+            next(err)
         }
     }
     async addReceiving(req, res, next) {
         try {
+            console.log("in rec controller, body: "+req.body)
             const response = await addReceiving(req.body);
             res.json(response);
         }
-        catch (err) {
-            res.status(404).end("Error while adding receiving vaccination")
-            next(err);
+        catch (ex) {
+            const err = {}
+            err.statusCode = 404;
+            err.message = ex;
+            next(err)
         }
     }
 }

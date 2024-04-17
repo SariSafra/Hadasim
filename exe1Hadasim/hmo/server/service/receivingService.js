@@ -1,6 +1,7 @@
 import 'dotenv/config'
 import { query } from './dbService.js';
 import { lettersOnly, numbersOnly } from './validationService.js';
+import {dateValidation} from './validationService.js'
 async function getReceiving(memberId) {
     const result = await query('SELECT DISTINCT * FROM hmo.ReceivingVaccines NATURAL JOIN hmo.Vaccinations  where MemberId=? ;', [memberId]);
 
@@ -28,10 +29,11 @@ async function deleteReceiving(MemberId, VaccinationId = 0) {
     return resulat;
 }
 async function addReceiving(receiving) {
+    console.log("in add rec: "+receiving.MemberId+" "+receiving.VaccinationsId+" "+ receiving.VaccinationsDate)
     if (!numbersOnly(receiving.MemberId))
         throw ("Invalid input");
-    let check1 = await query("SELECT  COUNT(MemberId) AS number FROM hmo.ReceivingVaccines WHERE MemberId = ?;", [receiving.MemberId]);
-    if (check1[0].number > 4)
+    let check1 = await query("SELECT DISTINCT COUNT(MemberId) AS number FROM hmo.ReceivingVaccines WHERE MemberId = ?;", [receiving.MemberId]);
+    if (check1[0].number > 6)
         throw ("you can't insert more than 4 Vaccinations")
     const resulat = await query(`INSERT INTO hmo.ReceivingVaccines  VALUES (?,?,?);`, [receiving.MemberId, receiving.VaccinationsId, receiving.VaccinationsDate]);
     return resulat;

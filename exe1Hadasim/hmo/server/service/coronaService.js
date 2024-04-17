@@ -1,5 +1,6 @@
 import 'dotenv/config'
 import { query } from './dbService.js';
+import {dateValidation} from './validationService.js'
 async function getCoronaById(MemberId) {
     const result = await query('SELECT * FROM hmo.CoronaPatients  where MemberId=? ;', [MemberId]);
     return result;
@@ -18,6 +19,8 @@ async function deleteCorona(MemberId) {
     return resulat;
 }
 async function addCorona(corona) {
+    if(!dateValidation(corona.StartDate,corona.EndDate))
+    throw("invalid input")
     console.log("in service vec in add corona function: " + corona.MemberId + " " + corona.EndDate);
     const resulat = await query(`INSERT INTO hmo.CoronaPatients  VALUES (?,?,?);`, [corona.MemberId, corona.StartDate, corona.EndDate]);
     return resulat;

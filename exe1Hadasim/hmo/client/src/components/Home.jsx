@@ -6,6 +6,7 @@ export default function Home() {
     useEffect(() => {
         navigate("/hmo/members");
     }, []);
+
     return (
         <></>
     )

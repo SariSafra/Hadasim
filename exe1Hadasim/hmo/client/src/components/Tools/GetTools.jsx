@@ -80,8 +80,7 @@ export const DeleteRequest = (state, comment, MemberId) => {
                 comment("there is no members.")
             }
             else {
-                state(data);
-            }
+                state(members => members.filter(member => member.MemberId !== MemberId));            }
         })
         .catch(error => {
             comment(`Server error:${error}.`)
@@ -94,6 +93,10 @@ export const CreateRequest = (comment, table, newMember) => {
         body: JSON.stringify(newMember)
     })
         .then(response => {
+            if(response.status==404)
+                comment("We were unable to fulfill your request, please try again");
+            else
+            comment("");
             if (!response.ok) {
                 throw new Error(`Request failed with status: ${response.status}`);
             }

@@ -6,9 +6,11 @@ export default class CoronaControllers {
             res.header("Access-Control-Allow-Origin", "*");
             return res.json(data);
         }
-        catch (err) {
-            res.status(404).end("Error while searching corona by id")
-            next(err);
+        catch (ex) {
+            const err = {}
+            err.statusCode = 404;
+            err.message = ex;
+            next(err)
         }
 
     }
@@ -18,9 +20,12 @@ export default class CoronaControllers {
             res.header("Access-Control-Allow-Origin", "*");
             res.send(data);
         }
-        catch (err) {
-            res.status(404).end("Error while searching corona")
-            next(err);
+
+        catch (ex) {
+            const err = {}
+            err.statusCode = 404;
+            err.message = ex;
+            next(err)
         }
     }
 
@@ -29,9 +34,11 @@ export default class CoronaControllers {
             const response = await updateCorona(req.params.id, req.body);
             res.json(response);
         }
-        catch (err) {
-            res.status(404).end("Error while updating corona")
-            next(err);
+        catch (ex) {
+            const err = {}
+            err.statusCode = 404;
+            err.message = ex;
+            next(err)
         }
     }
     async deleteCorona(req, res, next) {
@@ -39,9 +46,11 @@ export default class CoronaControllers {
             const response = await deleteCorona(req.params.id);
             res.json(response);
         }
-        catch (err) {
-            res.status(404).end("Error while deleting corona ")
-            next(err);
+        catch (ex) {
+            const err = {}
+            err.statusCode = 404;
+            err.message = ex;
+            next(err)
         }
     }
     async addCorona(req, res, next) {
@@ -49,9 +58,11 @@ export default class CoronaControllers {
             const response = await addCorona(req.body);
             res.json(response);
         }
-        catch (err) {
-            res.status(404).end("Error while adding corona")
-            next(err);
+        catch (ex) {
+            const err = {}
+            err.statusCode = 404;
+            err.message = ex;
+            next(err)
         }
     }
 }
